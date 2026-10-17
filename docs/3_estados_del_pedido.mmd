@@ -1,0 +1,19 @@
+stateDiagram-v2
+  state "En proceso: diagnóstico" as Diag
+  state "En proceso: espera de refacción" as Espera
+  state "En proceso: reparación" as Rep
+  state "En proceso: listo para entrega" as Listo
+  [*] --> Pendiente
+  Pendiente --> Diag: iniciar trabajo
+  Diag --> Espera: falta refacción
+  Diag --> Rep: aprobar reparación
+  Espera --> Rep: llega la refacción
+  Rep --> Listo: terminar trabajo
+  Listo --> Entregado: entregar vehículo
+  Pendiente --> Cancelado: cancelar con motivo
+  Diag --> Cancelado: cancelar con motivo
+  Espera --> Cancelado: cancelar con motivo
+  Rep --> Cancelado: cancelar con motivo
+  Listo --> Cancelado: cancelar con motivo
+  Entregado --> [*]
+  Cancelado --> [*]

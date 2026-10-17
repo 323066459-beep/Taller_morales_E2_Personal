@@ -1,0 +1,35 @@
+erDiagram
+  CLIENTE ||--o{ PEDIDO : realiza
+  PEDIDO ||--|{ DETALLE_PEDIDO : contiene
+  SERVICIO ||--o{ DETALLE_PEDIDO : se_incluye_en
+  CLIENTE {
+    int id_cliente PK
+    string nombre
+    string telefono
+    string notas
+  }
+  SERVICIO {
+    int id_servicio PK
+    string nombre
+    string descripcion
+    decimal precio
+  }
+  PEDIDO {
+    int id_pedido PK
+    int id_cliente FK
+    string vehiculo
+    string placas
+    date fecha_creacion
+    date fecha_compromiso
+    string estado
+    string etapa
+    decimal total
+    string motivo_cancelacion
+  }
+  DETALLE_PEDIDO {
+    int id_detalle PK
+    int id_pedido FK
+    int id_servicio FK
+    int cantidad
+    decimal precio_unitario
+  }

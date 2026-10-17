@@ -1,0 +1,21 @@
+flowchart LR
+  R([Recepcionista])
+  subgraph Sistema[Sistema de pedidos Taller Morales]
+    direction TB
+    UC1(Registrar y consultar clientes)
+    UC2(Registrar y consultar catálogo)
+    UC3(Crear pedido con vehículo y fecha compromiso)
+    UC4(Modificar fecha compromiso)
+    UC6(Cancelar pedido con motivo)
+    UC7(Listar pedidos por estado o cliente, atrasados primero)
+    UC5(Cambiar y consultar estado y etapa)
+  end
+  M([Mecánico])
+  R --- UC1
+  R --- UC2
+  R --- UC3
+  R --- UC4
+  R --- UC6
+  R --- UC7
+  UC7 --- M
+  UC5 --- M
